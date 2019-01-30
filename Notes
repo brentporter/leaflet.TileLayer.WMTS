@@ -1,0 +1,21 @@
+Notes as to changes
+1. import { CRS, DomEvent, TileLayer, Util, Point } from 'leaflet' at top of src/leaflet-tilelayer-wmts
+2. export var TileLayerWMTS instead of L.TileLayer.WMTS at what used to be line 1
+3. in getTileUrl need to fix this - add var to instantiate the tilewidth variable
+4. change this
+L.tileLayer.wmts = function (url, options) {
+    return new TileLayerWMTS(url, options);
+};
+to this
+export function tileLayerWMTS(url, options){
+    return new TileLayerWMTS(url, options);
+}
+export default tileLayerWMTS;
+
+5. add these to package.json file used
+"jsnext:main": "src/leaflet-tilelayer-wmts.js",
+ "jspm": {
+    "registry": "npm",
+    "format": "es6",
+    "main": "src/leaflet-tilelayer-wmts.js"
+ },
