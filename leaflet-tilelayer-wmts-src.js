@@ -1,4 +1,6 @@
-L.TileLayer.WMTS = L.TileLayer.extend({
+import { CRS, DomEvent, TileLayer, Util, Point } from 'leaflet';
+
+export var TileLayerWMTS = L.TileLayer.extend({
     defaultWmtsParams: {
         service: 'WMTS',
         request: 'GetTile',
@@ -43,31 +45,15 @@ L.TileLayer.WMTS = L.TileLayer.extend({
         var zoom = this._tileZoom;
         var nw = this._crs.project(this._map.unproject(nwPoint, zoom));
         var se = this._crs.project(this._map.unproject(sePoint, zoom));
-        tilewidth = se.x-nw.x;
+        var tilewidth = se.x-nw.x;
         //zoom = this._map.getZoom();
         var ident = this.matrixIds[zoom].identifier;
-        var tilematrix = this.wmtsParams.tilematrixSet + ":" + ident;
         var X0 = this.matrixIds[zoom].topLeftCorner.lng;
         var Y0 = this.matrixIds[zoom].topLeftCorner.lat;
         var tilecol=Math.floor((nw.x-X0)/tilewidth);
         var tilerow=-Math.floor((nw.y-Y0)/tilewidth);
         var url = L.Util.template(this._url, {s: this._getSubdomain(coords)});
-        return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + tilematrix + "&tilerow=" + tilerow +"&tilecol=" + tilecol;
-        /*
-        var tileBounds = this._tileCoordsToBounds(coords);
-        var zoom = this._tileZoom;
-        var nw = this._crs.project(tileBounds.getNorthWest());
-        var se = this._crs.project(tileBounds.getSouthEast());
-        var tilewidth = se.x-nw.x;
-        var ident = this.matrixIds[zoom].identifier;
-        var X0 = this.matrixIds[zoom].topLeftCorner.lng;
-        var Y0 = this.matrixIds[zoom].topLeftCorner.lat;
-        var tilecol=Math.floor((nw.x+1-X0)/tilewidth);
-        var tilerow=-Math.floor((nw.y-1-Y0)/tilewidth);
-        var url = L.Util.template(this._url, {s: this._getSubdomain(coords)});
-        console.log(L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + ident + "&tilerow=" + tilerow +"&tilecol=" + tilecol );
         return url + L.Util.getParamString(this.wmtsParams, url) + "&tilematrix=" + ident + "&tilerow=" + tilerow +"&tilecol=" + tilecol ;
-        */
     },
 
     setParams: function (params, noRedraw) {
@@ -77,10 +63,10 @@ L.TileLayer.WMTS = L.TileLayer.extend({
         }
         return this;
     },
-    
+
     getDefaultMatrix : function () {
         /**
-         * the matrix3857 represents the projection 
+         * the matrix3857 represents the projection
          * for in the IGN WMTS for the google coordinates.
          */
         var matrixIds3857 = new Array(22);
@@ -94,6 +80,8 @@ L.TileLayer.WMTS = L.TileLayer.extend({
     }
 });
 
-L.tileLayer.wmts = function (url, options) {
-    return new L.TileLayer.WMTS(url, options);
-};
+export function tileLayerWMTS(url, options){
+    return new TileLayerWMTS(url, options);
+}
+
+export default tileLayerWMTS;
