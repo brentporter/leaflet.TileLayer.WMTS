@@ -1,0 +1,61 @@
+{
+  "_from": "leaflet-tilelayer-wmts@^1.0.0",
+  "_id": "leaflet-tilelayer-wmts@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-nCOYGYf1hz1AJPa21U4vnj1oodk=",
+  "_location": "/leaflet-tilelayer-wmts",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "leaflet-tilelayer-wmts@^1.0.0",
+    "name": "leaflet-tilelayer-wmts",
+    "escapedName": "leaflet-tilelayer-wmts",
+    "rawSpec": "^1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/leaflet-tilelayer-wmts/-/leaflet-tilelayer-wmts-1.0.0.tgz",
+  "_shasum": "9c23981987f5873d4024f6b6d54e2f9e3d68a1d9",
+  "_spec": "leaflet-tilelayer-wmts@^1.0.0",
+  "_where": "/Users/brent-admin/IdeaProjects/ReactMapping_Moves",
+  "author": {
+    "name": "Alexandre Melard",
+    "url": "http://blog.melard.fr"
+  },
+  "bugs": {
+    "url": "https://github.com/XavierDupessey/leaflet.TileLayer.WMTS/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Xavier Dupessey",
+      "email": "dev@xavierdupessey.com"
+    }
+  ],
+  "deprecated": false,
+  "description": "Add WMTS layering for leaflet.",
+  "jsnext:main": "src/leaflet-tilelayer-wmts.js",
+  "jspm": {
+    "registry": "npm",
+    "format": "es6",
+    "main": "src/leaflet-tilelayer-wmts.js"
+  },
+  "homepage": "https://github.com/XavierDupessey/leaflet.TileLayer.WMTS#readme",
+  "keywords": [
+    "leaflet",
+    "WMTS",
+    "IGN"
+  ],
+  "license": "UNLICENSED",
+  "module": "src/leaflet-tilelayer-wmts.js",
+  "name": "leaflet-tilelayer-wmts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XavierDupessey/leaflet.TileLayer.WMTS.git"
+  },
+  "version": "1.0.0"
+}
